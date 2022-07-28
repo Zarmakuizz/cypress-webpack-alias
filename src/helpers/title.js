@@ -1,0 +1,1 @@
+export const expandTitle = (title) => `${title}, New Visitor!`;

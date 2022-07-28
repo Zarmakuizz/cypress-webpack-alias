@@ -310,14 +310,13 @@ module.exports = function (webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
-        // Support React Native Web
-        // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web',
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
+		'@Components': path.join(paths.appPath, 'src/components/'),
+		'@Helpers': path.join(paths.appPath, 'src/helpers/'),
         ...(modules.webpackAliases || {}),
       },
       plugins: [
